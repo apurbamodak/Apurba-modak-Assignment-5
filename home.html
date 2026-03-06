@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub Issues Tracker</title>
+        <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+        <!-- tailwind & daisyui -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        
+        <!-- Geist font -->
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+        <!-- font awesome  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <style>
+            * {
+                font-family: "Geist", sans-serif;
+            }
+        </style>
 </head>
 <body>
-    <h2>home pag</h2>
+    <header class="w-11/12 mx-auto sticky">
+        <div class="navbar bg-base-100 px-6 flex justify-between items-center shadow-sm">
+            <div class="flex items-center gap-3">
+                <img class="w-10 rounded-full" alt="" src="./assets/github-logo.png" />
+                <p class="text-xl">GitHub Issues Tracker</p>
+            </div>
+            <div class="">
+                <input type="text"  placeholder="Search issues..." class="input input-bordered w-24 md:w-auto" />
+                <a class="btn btn-primary text-xl"><i class="fa-solid fa-plus"></i>New Issue</a>
+
+            </div>
+        </div>
+
+        <div class="btn-container w-[80%] mx-auto bg-base-100 px-6 py-10 shadow-sm flex gap-5">
+            <button class="btn btn-soft btn-primary">All</button>
+            <button class="btn btn-soft btn-primary">Open</button>
+            <button class="btn btn-soft btn-primary">Closed</button>
+        </div>
+    </header>
 </body>
 </html>
