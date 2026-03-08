@@ -27,137 +27,85 @@
         </style>
 </head>
 <body class="bg-gray-100">
-
     <header class="w-11/12 mx-auto py-6 sticky top-0 z-50 bg-base-100">
-
         <div class="navbar bg-base-100 px-6 shadow-sm flex justify-between">
-
             <div class="flex items-center gap-3">
                 <img class="w-10 rounded-full" alt="" src="./assets/github-logo.png" />
                 <p class="text-xl">GitHub Issues Tracker</p>
-
             </div>
-
             <div class="flex gap-3">
-
                 <input id="searchInput" type="text" placeholder="Search issues..." class="input input-bordered" />
-
                 <button id="searchBtn" class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue
                 </button>
-
             </div>
-
         </div>
-
-
-        <!-- Tabs -->
 
         <div class="bg-base-100 px-6 pt-6">
-
             <div class="flex gap-4">
-
                 <button id="allIssuesBtn" class="btn btn-primary rounded-xl">All</button>
-
                 <button id="openIssuesBtn" class="btn btn-outline rounded-xl">Open</button>
-
                 <button id="closedIssuesBtn" class="btn btn-outline rounded-xl">Closed</button>
-
             </div>
-
         </div>
-
     </header>
 
-
     <main class="w-[80%] mx-auto mt-6">
-
         <div class="flex justify-between items-center mb-4">
-
             <div class="flex gap-3 items-center">
-
                 <div class="w-8">
                     <img src="./assets/Aperture.png">
                 </div>
-
                 <div>
                     <h2 id="issueCount" class="font-bold">0 Issues</h2>
                     <p class="text-sm text-gray-500">Track and manage your project issues</p>
                 </div>
-
             </div>
-
             <div class="flex gap-4 text-sm">
-
                 <span class="flex gap-1 items-center">
                     <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                     Open
                 </span>
-
                 <span class="flex gap-1 items-center">
                     <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
                     Closed
                 </span>
-
             </div>
-
         </div>
-
-
-        <!-- Issues Grid -->
 
         <div id="issuesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         </div>
-
-
-        <!-- Loading -->
-
         <div id="loadingSpinner" class="hidden flex justify-center mt-10">
             <span class="loading loading-dots loading-lg"></span>
         </div>
-
     </main>
-
-
-    <!-- Modal -->
-
     <dialog id="issueModal" class="modal">
         <div class="modal-box">
-
             <div class="flex justify-between items-center mb-4">
                 <h3 id="modalTitle" class="font-bold text-xl"></h3>
                 <span id="modalStatusBadge" class="badge"></span>
             </div>
-
             <p id="modalDescription" class="text-sm mb-4"></p>
-
             <div class="space-y-2 text-sm">
-
                 <p>
                     <span class="font-semibold">Category:</span>
                     <span id="modalCategory"></span>
                 </p>
-
                 <p>
                     <span class="font-semibold">Author:</span>
                     <span id="modalAuthor"></span>
                 </p>
-
                 <p>
                     <span class="font-semibold">Priority:</span>
                     <span id="modalPriority"></span>
                 </p>
-
             </div>
-
             <div class="modal-action">
                 <form method="dialog">
                     <button class="btn btn-primary">Close</button>
                 </form>
             </div>
-
         </div>
     </dialog>
-
 
     <script src="./script/script.js"></script>
     <script src="./script/login.js"></script>
