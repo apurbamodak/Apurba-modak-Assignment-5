@@ -49,7 +49,14 @@ function displayIssues(issues) {
             `card bg-white shadow-sm border-t-4 ${borderColor}`;
         card.innerHTML = `
         <div class="card-body">
-        <div class="flex justify-end"> <span class="badge badge-warning">${issue.priority}</span> </div>
+         <div class="flex justify-end">
+            <span class="badge ${issue.priority === "high"
+                ? "bg-red-100 text-red-600"
+                : issue.priority === "medium"
+                    ? "bg-yellow-100 text-yellow-600"
+                    : "bg-gray-200 text-gray-600"}">
+            ${issue.priority.toUpperCase()}</span>
+         </div>
         <h2
         class="card-title cursor-pointer hover:text-blue-600"
         data-id="${issue._id}"
@@ -62,10 +69,10 @@ function displayIssues(issues) {
         <div class="flex flex-wrap gap-2 text-xs mt-2">
         ${issue.labels.map(label => `
             <span class="badge ${label === "bug"
-                ? "bg-red-100 text-red-600 border-red-200"
-                : "bg-yellow-100 text-yellow-700 border-yellow-200"
-            } border">${label.toUpperCase()}</span>`
-        ).join("")}
+                            ? "bg-red-100 text-red-600 border-red-200"
+                            : "bg-yellow-100 text-yellow-700 border-yellow-200"
+                        } border">${label.toUpperCase()}</span>`
+                    ).join("")}
         </div>
         <br>
         <hr>
@@ -126,25 +133,7 @@ async function searchIssues() {
 
 
 
-async function openIssueModal(id) {
-    const res = await fetch(
-        `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
-    );
-    const data = await res.json();
-    const issue = data.data;
-    modalTitle.textContent = issue.title;
-    modalDescription.textContent = issue.description;
-    modalAuthor.textContent = issue.author;
-    modalCategory.textContent = issue.category;
-    modalPriority.textContent = issue.priority;
-    modalStatusBadge.textContent = issue.status;
-    if (issue.status === "open") {
-        modalStatusBadge.className = "badge badge-success";
-    } else {
-        modalStatusBadge.className = "badge badge-secondary";
-    }
-    issueModal.showModal();
-}
+
 
 
 allIssuesBtn.addEventListener("click", () => {
