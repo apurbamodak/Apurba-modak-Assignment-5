@@ -79,12 +79,12 @@
         </div>
     </main>
     <!-- Open the modal using ID.showModal() method -->
-    <button class="btn" onclick="issueModal.showModal()">open modal</button>
-    <dialog id="issueModal" class="modal">
+    
+    <dialog id="issueModalDetails" class="modal">
         <div class="modal-box">
                 <div class="flex justify-between items-start mb-4">
                   <h3 id="modalTitle" class="font-bold text-2xl">Issue Title</h3>
-                  <button class="btn btn-sm btn-circle btn-ghost" onclick="document.getElementById('issueModal').close()">✕</button>
+                  <button class="btn btn-sm btn-circle btn-ghost" onclick="document.getElementById('issueModalDetails').close()">✕</button>
                 </div>
                 <div id="modalLabels" class="flex flex-wrap gap-2 mb-4"></div>
                 <p id="modalDescription" class="text-gray-600 mb-6"></p>
@@ -105,7 +105,6 @@
                 
             <div class="modal-action">
                 <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
                     <button class="btn">Close</button>
                 </form>
             </div>
@@ -113,6 +112,5 @@
     </dialog>
 
     <script src="./script/script.js"></script>
-    <script src="./script/login.js"></script>
 </body>
 </html>

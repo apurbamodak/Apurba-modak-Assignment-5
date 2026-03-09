@@ -5,13 +5,8 @@ const allIssuesBtn = document.getElementById("allIssuesBtn");
 const openIssuesBtn = document.getElementById("openIssuesBtn");
 const closedIssuesBtn = document.getElementById("closedIssuesBtn");
 const issueCount = document.getElementById("issueCount");
-const issueModal = document.getElementById("issueModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalDescription = document.getElementById("modalDescription");
-const modalAuthor = document.getElementById("modalAuthor");
-const modalPriority = document.getElementById("modalPriority");
-const modalCategory = document.getElementById("modalCategory");
-const modalStatusBadge = document.getElementById("modalStatusBadge");
+const issueModal = document.getElementById("issueModalDetails");
+
 
 let allIssues = [];
 
@@ -63,7 +58,7 @@ function displayIssues(issues) {
         >
         ${issue.title}
         </h2>
-        <p class="line-clamp-2 overflow:hidden">
+        <p class="line-clamp-2 overflow-hidden">
         ${issue.description}
         </p>
         <div class="flex flex-wrap gap-2 text-xs mt-2">
@@ -86,7 +81,7 @@ function displayIssues(issues) {
         `;
 
         card.addEventListener("click", () => {
-            openIssueModal(issue._id);
+            issueModalDetails(issue);
         });
         issuesContainer.appendChild(card);
     });
@@ -132,7 +127,36 @@ async function searchIssues() {
 }
 
 
+function issueModalDetails(issue) {
 
+    document.getElementById("modalTitle").textContent = issue.title;
+    document.getElementById("modalDescription").textContent = issue.description;
+    document.getElementById("modalAssignee").textContent = issue.author;
+
+    const priorityBadge = document.getElementById("modalPriority");
+    priorityBadge.textContent = issue.priority.toUpperCase();
+
+    priorityBadge.className =
+        "badge " +
+        (issue.priority === "high"
+            ? "bg-red-100 text-red-600"
+            : issue.priority === "medium"
+                ? "bg-yellow-100 text-yellow-600"
+                : "bg-gray-200 text-gray-600");
+
+    const labelsContainer = document.getElementById("modalLabels");
+
+    labelsContainer.innerHTML = issue.labels.map(label => `
+        <span class="badge ${label === "bug"
+            ? "bg-red-100 text-red-600 border-red-200"
+            : "bg-yellow-100 text-yellow-700 border-yellow-200"
+        } border">
+        ${label.toUpperCase()}
+        </span>
+    `).join("");
+
+    issueModal.showModal();
+}
 
 
 
